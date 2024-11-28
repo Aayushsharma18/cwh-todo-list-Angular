@@ -1,3 +1,9 @@
+##Important: after cloning the project install these packages: Bootstrap, JQUERY. And set css & js file path in architecture/build/ style and script.
+```bash
+ng install bootstrap
+ng install jquery
+```
+
 # CwhTodoList
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.1.
