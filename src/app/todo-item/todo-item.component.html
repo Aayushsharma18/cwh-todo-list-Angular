@@ -1,0 +1,8 @@
+<div class="my-3 todo-bg">
+
+    <h5 class="mt-2">{{todo.srno}}. {{todo.title}} </h5>
+    <p> {{todo.desc}} &nbsp; - active: {{todo.isactive}}</p>
+    <button class="btn btn-primary btn-sm mx-2 my-2" (click)="OnSubClick()">Done</button>        
+    <button class="btn btn-danger btn-sm mx-2 my-2" (click)="OnDelClick(todo)">Delete</button>        
+
+</div>

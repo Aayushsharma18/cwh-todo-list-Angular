@@ -1,0 +1,9 @@
+.todo-bg{
+    background-color: rgb(243, 237, 230);
+    border: 2px;
+    border-radius: 20px;
+    border-right: 10px rgb(176, 175, 175);
+    border-bottom: 10px rgb(160, 157, 157);
+    padding: 8px;
+
+}
