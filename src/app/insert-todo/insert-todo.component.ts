@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './insert-todo.component.html',
   styleUrl: './insert-todo.component.css'
 })
+
 export class InsertTodoComponent {
 
 }

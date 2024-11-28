@@ -5,12 +5,13 @@ import { CommonModule, NgFor, NgForOf, NgIf } from '@angular/common';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { TodoItemComponent } from "./todo-item/todo-item.component";
 import { Todo } from '../Model/Todo';
+import { InsertTodoComponent } from "./insert-todo/insert-todo.component";
 
 { }
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, NavbarComponent, TodoItemComponent],
+  imports: [CommonModule, NavbarComponent, TodoItemComponent, InsertTodoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -39,6 +40,11 @@ export class AppComponent {
   };
 
   deleteTodo(todo: Todo) {
+
+    var delTodo = this.todos.indexOf(todo);
+
+    this.todos.splice(delTodo, 1);
+    
     console.log(todo);
 
   }
