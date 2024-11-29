@@ -3,7 +3,8 @@
 ng install bootstrap
 ng install jquery
 ```
-
+##Router is working its just all the components are in app component. that is why it looks like this.
+else everything is working fine.
 # CwhTodoList
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.1.
