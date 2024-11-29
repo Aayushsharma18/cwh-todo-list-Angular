@@ -1,21 +1,22 @@
 import { Component, Input, output, EventEmitter, Output } from '@angular/core';
 import { Todo } from '../../Model/Todo';
-
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-todo-item',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './todo-item.component.html',
   styleUrl: './todo-item.component.css'
 })
 
 export class TodoItemComponent {
 
-  @Input() todo: Todo;
+  @Input() todo!: Todo;
   @Output() DeleteTodo: EventEmitter<Todo> = new EventEmitter();
+  @Output() CheckTodo: EventEmitter<Todo> = new EventEmitter();
 
   constructor() {
-    this.todo = new Todo(1, "", "", true);
+
   }
 
   //del todo btn
@@ -24,9 +25,10 @@ export class TodoItemComponent {
     console.log("Delete Button Clicked.");
   }
 
-  //form submit btn
-  OnSubClick() {
-    console.log("BTn submited.");
+  OnCheck(todo: Todo) {
+    console.log(todo);
+    this.CheckTodo.emit(todo);
 
   }
+
 }

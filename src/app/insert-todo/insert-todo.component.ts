@@ -11,11 +11,10 @@ import { Todo } from '../../Model/Todo';
 
 export class InsertTodoComponent {
 
-  @Input() todo: Todo;
   @Output() AddTodo: EventEmitter<Todo> = new EventEmitter();
 
   constructor() {
-    this.todo = new Todo(1, "", "", true);
+    
   }
 
   srno!: number;

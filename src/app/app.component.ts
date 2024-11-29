@@ -1,17 +1,17 @@
-import { Component, Input, NgModule, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 
-import { CommonModule, NgFor, NgForOf, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { TodoItemComponent } from "./todo-item/todo-item.component";
 import { Todo } from '../Model/Todo';
 import { InsertTodoComponent } from "./insert-todo/insert-todo.component";
+import { RouterOutlet } from '@angular/router';
 
 { }
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, NavbarComponent, TodoItemComponent, InsertTodoComponent],
+  imports: [CommonModule, NavbarComponent, TodoItemComponent, InsertTodoComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -20,41 +20,45 @@ import { InsertTodoComponent } from "./insert-todo/insert-todo.component";
 export class AppComponent {
   title = "Todo-List";
   todos: Todo[];
+  localItem: any;
 
-  @Input() todo: Todo;
   constructor() {
 
-    this.todo = new Todo(1, "", "", true);
+    this.localItem = localStorage.getItem("todos");
+    if (this.localItem == null) {
+      this.todos = [];
+    }
+    else {
+      this.todos = JSON.parse(this.localItem);
+    }
+
     this.todos = [
-      new Todo(1, 'Learn Angular', 'Study Angular basics and components', true),
-      new Todo(2, 'Create Todo App', 'Create a simple todo application', false),
-      new Todo(3, 'Build Todo App', 'Build a simple todo application', false),
-      new Todo(4, 'Create Shopping Cart', 'Build a simple Shopping Cart application', false),
-      new Todo(5, 'Learn Angular', 'Study Angular basics and components', true),
-      new Todo(6, 'Create Todo App', 'Create a simple todo application', false),
-      new Todo(7, 'Build Todo App', 'Build a simple todo application', false),
-      new Todo(8, 'Create Shopping Cart', 'Build a simple Shopping Cart application', false),
-      new Todo(9, 'Learn Angular', 'Study Angular basics and components', true),
-      new Todo(10, 'Create Todo App', 'Create a simple todo application', false),
-      new Todo(11, 'Build Todo App', 'Build a simple todo application', false),
-      new Todo(12, 'Create Shopping Cart', 'Build a simple Shopping Cart application', false),
+      new Todo(1, "new todo1", "new todo1", true),
+      new Todo(2, "new todo2", "new todo2", true)
     ];
   };
 
   deleteTodo(todo: Todo) {
 
-    var delTodo = this.todos.indexOf(todo);
-    this.todos.splice(delTodo, 1);
-
+    var todoInx = this.todos.indexOf(todo);
+    this.todos.splice(todoInx, 1);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
     console.log(todo);
 
   }
 
   addTodo(todo: Todo) {
 
-    var addtodo = this.todos.push(todo);
-
     console.log(todo);
+    this.todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
 
+  }
+
+  ToggleTodo(todo: Todo) {
+
+    var todoInx = this.todos.indexOf(todo);
+    this.todos[todoInx].isactive = !this.todos[todoInx].isactive;
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 }
