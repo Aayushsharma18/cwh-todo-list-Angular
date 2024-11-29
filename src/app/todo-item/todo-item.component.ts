@@ -10,21 +10,23 @@ import { Todo } from '../../Model/Todo';
 })
 
 export class TodoItemComponent {
-    
+
   @Input() todo: Todo;
   @Output() DeleteTodo: EventEmitter<Todo> = new EventEmitter();
 
   constructor() {
-    this.todo = new Todo(5, "new Todo", "This is new todo", false);
+    this.todo = new Todo(1, "", "", true);
   }
 
+  //del todo btn
   OnDelClick(todo: Todo) {
     this.DeleteTodo.emit(todo);
     console.log("Delete Button Clicked.");
   }
 
-  OnSubClick(){
+  //form submit btn
+  OnSubClick() {
     console.log("BTn submited.");
-    
+
   }
 }

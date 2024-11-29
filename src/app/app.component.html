@@ -6,12 +6,18 @@
       <h3 class="mb-4 text-center">Angular Todo List App</h3>
     </div>
 
-    <app-insert-todo></app-insert-todo>
+    <app-insert-todo [todo]="todo" (AddTodo)="addTodo($event)"></app-insert-todo>
 
-    <h4>Todos:</h4>
-    <div *ngFor="let todo of todos">
-      <app-todo-item [todo]="todo" (DeleteTodo)="deleteTodo($event)"></app-todo-item>
+    <div *ngIf="this.todos.length===0; else elseBlock">
+      <h3> You have no Todos yet, Add Some. </h3>
     </div>
+    <ng-template #elseBlock>
+
+      <h4>Todos:</h4>
+      <div *ngFor="let todo of todos">
+        <app-todo-item [todo]="todo" (DeleteTodo)="deleteTodo($event)"></app-todo-item>
+      </div>
+    </ng-template>
 
   </div>
 </div>

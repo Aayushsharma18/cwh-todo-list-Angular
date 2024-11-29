@@ -1,19 +1,35 @@
 <div class="my-4">
-
     <h3>Add Todo</h3>
 
-    <form action="" method="post" class="row g-2 mb-2 bg-light p-lg-4">
+    <form name="addtodoform" (ngSubmit)="OnSubmit()" class="row g-2 mb-2 bg-light p-lg-4">
 
-        <label for="title">Title:</label>
-        <input class="form-control me-2 col-auto" type="text" placeholder="Title" aria-label="Title">
+        <div class="col-12">
+            <label for="srno">Srno:</label>
+            <input class="form-control me-2 col-auto" id="srno" name="srno" type="number" placeholder="Srno"
+                aria-label="srno" [(ngModel)]="srno">
+        </div>
+       
+        <div class="col-12">
+            <label for="title">Title:</label>
+            <input class="form-control me-2 col-auto" id="title" name="title" type="text" placeholder="Title"
+                aria-label="Title" [(ngModel)]="title">
+        </div>
 
-        <label for="title">Desc:</label>
-        <input class="form-control me-2 col-auto" type="text" placeholder="Description" aria-label="Desc">
+        <div class="col-12">
+            <label for="desc">Desc:</label>
+            <input class="form-control me-2 col-auto" id="desc" name="desc" type="text" placeholder="Description"
+                aria-label="Desc" [(ngModel)]="desc">
+        </div>
 
-        <label for="title">Extra:</label>
-        <input class="form-control me-2 col-auto" type="text" placeholder="Extra" aria-label="Extra">
+        <div class="col-12">
+            <label for="active">Active:</label>
+            <input class="form-control me-2 col-auto" id="isactive" name="isactive" type="text-area"
+                placeholder="Active" aria-label="ISActive" [(ngModel)]="isactive">
+        </div>
+        <div class="col-12">
 
-        <button class="btn btn-sm btn-primary p-auto col-auto" type="submit">Add</button>
+            <button class="btn btn-primary p-auto col-1" type="submit" (click)="OnSubmit()">Add</button>
+        </div>
     </form>
 
 </div>

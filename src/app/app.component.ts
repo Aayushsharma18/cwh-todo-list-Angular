@@ -1,4 +1,4 @@
-import { Component, NgModule, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
+import { Component, Input, NgModule, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { CommonModule, NgFor, NgForOf, NgIf } from '@angular/common';
@@ -21,8 +21,10 @@ export class AppComponent {
   title = "Todo-List";
   todos: Todo[];
 
+  @Input() todo: Todo;
   constructor() {
 
+    this.todo = new Todo(1, "", "", true);
     this.todos = [
       new Todo(1, 'Learn Angular', 'Study Angular basics and components', true),
       new Todo(2, 'Create Todo App', 'Create a simple todo application', false),
@@ -42,9 +44,16 @@ export class AppComponent {
   deleteTodo(todo: Todo) {
 
     var delTodo = this.todos.indexOf(todo);
-
     this.todos.splice(delTodo, 1);
-    
+
+    console.log(todo);
+
+  }
+
+  addTodo(todo: Todo) {
+
+    var addtodo = this.todos.push(todo);
+
     console.log(todo);
 
   }
