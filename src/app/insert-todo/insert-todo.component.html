@@ -1,8 +1,7 @@
 <div class="my-4">
     <h3>Add Todo</h3>
 
-    <form name="addtodoform" (ngSubmit)="OnSubmit()" class="row g-2 mb-2 bg-light p-lg-4">
-
+    <form name="todoform" (ngSubmit)="OnSubmit()" class="row g-2 mb-2 bg-light p-lg-4">
         <div class="col-12">
             <label for="srno">Srno:</label>
             <input class="form-control me-2 col-auto" id="srno" name="srno" type="number" placeholder="Srno"
@@ -27,8 +26,7 @@
                 placeholder="Active" aria-label="ISActive" [(ngModel)]="isactive">
         </div>
         <div class="col-12">
-
-            <button class="btn btn-primary p-auto col-1" type="submit" (click)="OnSubmit()">Add</button>
+            <button class="btn btn-primary p-auto col-1" type="submit">Add</button>
         </div>
     </form>
 
